@@ -13,7 +13,6 @@ export class LinkedInScraperService {
         const page = await browser.newPage();
         // Navigate to LinkedIn job search page
         await page.goto(`https://www.linkedin.com/jobs/search/?keywords=${keyword}`);
-        console.log(0);
         // Wait for job listings to load
         await page.waitForSelector('.jobs-search__results-list', { timeout: 60000 }); // Increase timeout to 60 seconds
         // Wait for job listings to finish rendering
@@ -31,9 +30,9 @@ export class LinkedInScraperService {
             const location : string  = $(element).find('.job-search-card__location').text().trim();
             const url : string  = $(element).find('.base-card__full-link').attr('href');
             jobListings.push({
+                title:title,
                 company : company,
                 place :location,
-                title:title,
                 url : url,
             });
         });

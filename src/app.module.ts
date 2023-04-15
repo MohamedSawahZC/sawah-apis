@@ -7,5 +7,6 @@ import { WebModule } from './web/web.module';
     PdfModule,
     WebModule
   ],
+  providers: [],
 })
 export class AppModule {}
